@@ -35,7 +35,7 @@ extension LoginView {
     func style() {
         greetings.translatesAutoresizingMaskIntoConstraints = false
         greetings.text = "Welcome"
-        greetings.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        greetings.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.text = "Please enter your email & password to sign in"
@@ -61,21 +61,23 @@ extension LoginView {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 20
         stackView.alignment = .leading
         
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         checkbox.setImage(UIImage(systemName: "square"), for: .normal)
         checkbox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
-        checkbox.tintColor = .systemPurple
+        checkbox.tintColor = .checkbox
         checkbox.addTarget(self, action: #selector(toggleCheckbox), for: .touchUpInside)
+        checkbox.configuration?.buttonSize = .large
+        checkbox.configuration = .borderless()
         
         rememberMe.translatesAutoresizingMaskIntoConstraints = false
         rememberMe.text = "Remember me"
         rememberMe.font = UIFont.preferredFont(forTextStyle: .body)
         
         horizontalStack.axis = .horizontal
-        horizontalStack.spacing = 8
+        horizontalStack.spacing = 2
     }
     
     func layout() {
@@ -104,7 +106,6 @@ extension LoginView {
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: self.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-            
         ])
     }
 }
