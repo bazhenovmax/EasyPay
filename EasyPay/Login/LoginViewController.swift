@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController : UIViewController {
     let loginView = LoginView()
-    let forgotPassword = UILabel()
+    let forgotPassword = UIButton()
     let loginButton = UIButton()
     
     override func viewDidLoad() {
@@ -25,10 +25,10 @@ extension LoginViewController {
         loginView.translatesAutoresizingMaskIntoConstraints = false
         
         forgotPassword.translatesAutoresizingMaskIntoConstraints = false
-        forgotPassword.text = "Forgot Password?"
-        forgotPassword.textColor = .systemBlue
-        forgotPassword.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-        forgotPassword.textAlignment = .center
+        forgotPassword.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        forgotPassword.setTitleColor(.systemBlue, for: .normal)
+        forgotPassword.titleLabel?.textAlignment = .center
+        forgotPassword.setTitle("Forgot Password?", for: .normal)
         
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.setTitle("Sign in", for: [])
@@ -37,6 +37,11 @@ extension LoginViewController {
         loginButton.setTitleColor(.black, for: .normal)
         loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         loginButton.addTarget(self, action: #selector(tappedButton), for: .primaryActionTriggered)
+        loginButton.layer.shadowColor = UIColor.shadowButton.cgColor
+        loginButton.layer.shadowOpacity = 1
+        loginButton.layer.shadowOffset = CGSize(width: 4, height: 6.0)
+        loginButton.layer.shadowRadius = 0
+        
     }
     
     private func layout() {

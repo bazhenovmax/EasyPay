@@ -15,7 +15,7 @@ class LoginView : UIView {
     let passwordField = UITextField()
     let stackView = UIStackView()
     let paddingEmailView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 20))
-    let paddingPasswordView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 20))
+    let paddingPasswordViewLeft = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 20))
     let checkbox = UIButton()
     let rememberMe = UILabel()
     let horizontalStack = UIStackView()
@@ -56,8 +56,10 @@ extension LoginView {
         passwordField.backgroundColor = UIColor(named: "TextFieldColor")
         passwordField.layer.cornerRadius = 16
         passwordField.clipsToBounds = true
-        passwordField.leftView = paddingPasswordView
+        passwordField.leftView = paddingPasswordViewLeft
         passwordField.leftViewMode = .always
+        passwordField.enablePasswordToggle()
+        passwordField.isSecureTextEntry = true
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
