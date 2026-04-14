@@ -18,11 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        
         loginViewController.delegate = self
-        
-        window?.rootViewController = loginViewController
-        
+
+        //window?.rootViewController = loginViewController
+        window?.rootViewController = CodeVerificationViewController()
         
         
         return true
