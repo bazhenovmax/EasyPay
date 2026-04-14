@@ -8,10 +8,17 @@
 import Foundation
 import UIKit
 
+protocol ForgotPasswordDelegate: AnyObject {
+    func didForgotPassword()
+}
+
 class LoginViewController : UIViewController {
     let loginView = LoginView()
     let forgotPassword = UIButton()
     let loginButton = UIButton()
+    
+    
+    weak var delegate: ForgotPasswordDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,7 @@ extension LoginViewController {
         forgotPassword.setTitleColor(.systemBlue, for: .normal)
         forgotPassword.titleLabel?.textAlignment = .center
         forgotPassword.setTitle("Forgot Password?", for: .normal)
+        forgotPassword.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
         
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.setTitle("Sign in", for: [])
@@ -61,7 +69,7 @@ extension LoginViewController {
             
             loginButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: loginButton.safeAreaLayoutGuide.bottomAnchor, multiplier: 6),
             loginButton.heightAnchor.constraint(equalToConstant: 60)
             
         ])
@@ -73,5 +81,9 @@ extension LoginViewController {
 extension LoginViewController {
     @objc func tappedButton() {
         print("Logged in")
+    }
+    
+    @objc func forgotPasswordTapped() {
+        delegate?.didForgotPassword()
     }
 }
