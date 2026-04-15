@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController.delegate = self
 
         //window?.rootViewController = loginViewController
-        window?.rootViewController = CodeVerificationViewController()
+        window?.rootViewController = OTPInputViewController()
         
         
         return true
