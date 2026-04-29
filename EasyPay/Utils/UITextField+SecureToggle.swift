@@ -11,18 +11,19 @@ import UIKit
 let passwordToggleButton = UIButton(type: .custom)
 
 extension UITextField {
-    func enablePasswordToggle() {
-        passwordToggleButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-        passwordToggleButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .selected)
-        passwordToggleButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
-        passwordToggleButton.contentEdgeInsets.right = 25
-        passwordToggleButton.tintColor = .black
-        rightView = passwordToggleButton
+    
+    func enablePasswordToggle(buttonIcon: UIButton) {
+        buttonIcon.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        buttonIcon.setImage(UIImage(systemName: "eye.slash.fill"), for: .selected)
+        buttonIcon.addTarget(self, action: #selector(togglePasswordView(_:)), for: .touchUpInside)
+        buttonIcon.contentEdgeInsets.right = 25
+        buttonIcon.tintColor = .black
+        rightView = buttonIcon
         rightViewMode = .always
     }
     
-    @objc func togglePasswordView(_ sender: Any) {
+    @objc func togglePasswordView(_ sender: UIButton) {
         isSecureTextEntry.toggle()
-        passwordToggleButton.isSelected.toggle()
+        sender.isSelected.toggle()
     }
 }

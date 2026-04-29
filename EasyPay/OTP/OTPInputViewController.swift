@@ -65,6 +65,7 @@ extension OTPInputViewController {
         sendButton.layer.shadowOpacity = 1
         sendButton.layer.shadowOffset = CGSize(width: 4, height: 6)
         sendButton.layer.shadowRadius = 0
+        sendButton.addTarget(self, action: #selector(handleShowNewPassword), for: .touchUpInside)
     }
     
     func layout() {
@@ -159,5 +160,10 @@ extension OTPInputViewController {
         
         let nextTextField = otpInputs[index].subviews.first as? UITextField
         nextTextField?.becomeFirstResponder()
+    }
+    
+    @objc func handleShowNewPassword() {
+        let controller = NewPasswordViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

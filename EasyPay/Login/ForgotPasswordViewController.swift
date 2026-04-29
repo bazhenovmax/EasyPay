@@ -35,6 +35,7 @@ extension ForgotPasswordViewController {
         continueButton.layer.shadowOpacity = 1
         continueButton.layer.shadowOffset = CGSize(width: 4.0, height: 6.0)
         continueButton.layer.shadowRadius = 0
+        continueButton.addTarget(self, action: #selector(handleShowOTP), for: .touchUpInside)
     }
     
     func layout() {
@@ -51,5 +52,12 @@ extension ForgotPasswordViewController {
             view.bottomAnchor.constraint(equalToSystemSpacingBelow: continueButton.safeAreaLayoutGuide.bottomAnchor, multiplier: 6),
             continueButton.heightAnchor.constraint(equalToConstant: 60)
         ])
+    }
+}
+
+extension ForgotPasswordViewController {
+    @objc func handleShowOTP() {
+        let controller = OTPInputViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

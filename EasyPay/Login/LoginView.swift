@@ -20,6 +20,8 @@ class LoginView : UIView {
     let rememberMe = UILabel()
     let horizontalStack = UIStackView()
     
+    let passwordToggleButton = UIButton(type: .custom)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         style()
@@ -58,7 +60,7 @@ extension LoginView {
         passwordField.clipsToBounds = true
         passwordField.leftView = paddingPasswordViewLeft
         passwordField.leftViewMode = .always
-        passwordField.enablePasswordToggle()
+        passwordField.enablePasswordToggle(buttonIcon: passwordToggleButton)
         passwordField.isSecureTextEntry = true
         
         stackView.translatesAutoresizingMaskIntoConstraints = false

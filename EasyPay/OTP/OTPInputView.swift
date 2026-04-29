@@ -44,7 +44,13 @@ extension OTPInputView {
         label.textColor = .black
         
         borderView.translatesAutoresizingMaskIntoConstraints = false
-        borderView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        borderView.backgroundColor = UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark: return UIColor.darkOPTCode
+            default:
+                return UIColor.lightOPTCode
+            }
+        }
         borderView.layer.borderWidth = 2
         borderView.layer.borderColor = if isActive { UIColor.systemBlue.cgColor } else { UIColor.clear.cgColor }
         

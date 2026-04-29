@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .systemBackground
         loginViewController.delegate = self
 
-        //window?.rootViewController = loginViewController
-        window?.rootViewController = OTPInputViewController()
+        //window?.rootViewController = NewPasswordViewController()
+        //window?.rootViewController = OTPInputViewController()
+        
+        window?.rootViewController = UINavigationController(rootViewController: ForgotPasswordViewController())
         
         
         return true
